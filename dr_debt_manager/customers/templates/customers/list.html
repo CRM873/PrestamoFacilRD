@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block title %}Customers{% endblock %}
+{% block content %}
+<h1>Customers</h1>
+<p><a href="/admin/customers/customer/add/">Add Customer</a></p>
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Phone</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for customer in customers %}
+		<tr>
+			<td><a href="{% url 'customers:detail' customer.pk %}">{{ customer.first_name }} {{ customer.last_name }}</a></td>
+			<td>{{ customer.email }}</td>
+			<td>{{ customer.phone }}</td>
+		</tr>
+		{% empty %}
+		<tr><td colspan="3">No customers yet.</td></tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% endblock %}

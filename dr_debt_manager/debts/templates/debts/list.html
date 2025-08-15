@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block title %}Debts{% endblock %}
+{% block content %}
+<h1>Debts</h1>
+<table>
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Customer</th>
+			<th>Principal</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for debt in debts %}
+		<tr>
+			<td><a href="{% url 'debts:detail' debt.pk %}">{{ debt.title }}</a></td>
+			<td><a href="{% url 'customers:detail' debt.customer.pk %}">{{ debt.customer }}</a></td>
+			<td>{{ debt.principal }}</td>
+		</tr>
+		{% empty %}
+		<tr><td colspan="3">No debts.</td></tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% endblock %}

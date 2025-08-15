@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block title %}Customer Details{% endblock %}
+{% block content %}
+<h1>{{ customer.first_name }} {{ customer.last_name }}</h1>
+<p>Email: {{ customer.email }} | Phone: {{ customer.phone }}</p>
+<p>ID: {{ customer.id_number }}</p>
+<p>Address: {{ customer.address }}, {{ customer.city }}, {{ customer.country }}</p>
+
+<h2>Debts</h2>
+<p><a href="/admin/debts/debt/add/">Add Debt</a></p>
+<table>
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Principal</th>
+			<th>Rate</th>
+			<th>Term</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for debt in customer.debts.all %}
+		<tr>
+			<td><a href="{% url 'debts:detail' debt.pk %}">{{ debt.title }}</a></td>
+			<td>{{ debt.principal }}</td>
+			<td>{{ debt.annual_interest_rate }}%</td>
+			<td>{{ debt.term_in_periods }}</td>
+		</tr>
+		{% empty %}
+		<tr><td colspan="4">No debts.</td></tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% endblock %}

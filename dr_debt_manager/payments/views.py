@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from django.views.generic import ListView
+from debts.models import Payment
 
-# Create your views here.
+
+class PaymentListView(ListView):
+	model = Payment
+	template_name = "payments/list.html"
+	context_object_name = "payments"
