@@ -15,12 +15,13 @@ const payment_entity_1 = require("./entities/payment.entity");
 const invoices_module_1 = require("../invoices/invoices.module");
 const customers_module_1 = require("../customers/customers.module");
 const events_module_1 = require("../events/events.module");
+const invoice_entity_1 = require("../invoices/entities/invoice.entity");
 let PaymentsModule = class PaymentsModule {
 };
 exports.PaymentsModule = PaymentsModule;
 exports.PaymentsModule = PaymentsModule = __decorate([
     (0, common_1.Module)({
-        imports: [typeorm_1.TypeOrmModule.forFeature([payment_entity_1.Payment, payment_entity_1.PaymentAllocation]), invoices_module_1.InvoicesModule, customers_module_1.CustomersModule, events_module_1.EventsModule],
+        imports: [typeorm_1.TypeOrmModule.forFeature([payment_entity_1.Payment, payment_entity_1.PaymentAllocation, invoice_entity_1.Invoice]), invoices_module_1.InvoicesModule, customers_module_1.CustomersModule, events_module_1.EventsModule],
         controllers: [payments_controller_1.PaymentsController],
         providers: [payments_service_1.PaymentsService],
         exports: [payments_service_1.PaymentsService],

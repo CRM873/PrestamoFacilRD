@@ -6,9 +6,10 @@ import { Payment, PaymentAllocation } from './entities/payment.entity';
 import { InvoicesModule } from '../invoices/invoices.module';
 import { CustomersModule } from '../customers/customers.module';
 import { EventsModule } from '../events/events.module';
+import { Invoice } from '../invoices/entities/invoice.entity';
 
 @Module({
-	imports: [TypeOrmModule.forFeature([Payment, PaymentAllocation]), InvoicesModule, CustomersModule, EventsModule],
+	imports: [TypeOrmModule.forFeature([Payment, PaymentAllocation, Invoice]), InvoicesModule, CustomersModule, EventsModule],
 	controllers: [PaymentsController],
 	providers: [PaymentsService],
 	exports: [PaymentsService],
